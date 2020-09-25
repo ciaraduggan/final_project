@@ -1,0 +1,55 @@
+---
+title: "Milestone_2"
+author: "Ciara Duggan"
+date: "9/25/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r git_repo}
+
+# Github repository link: https://github.com/ciaraduggan/final_project.git
+
+```
+
+```{r p1}
+
+# Project 1: Benjamin Villa: The Sacred and the Profane: Social, Religious, and
+# Medical Effects on Emotional Wellbeing
+
+# I liked that this project has a lot of interactive features that were
+# sufficiently easy to navigate. On the Overview page, the user can get a sense
+# of all of the data being used by toggling between different factor categories
+# (religious, social, economic, political, emotional, and medical), then
+# choosing a specific variable from a drop-down menu (for example, "Hours Spent
+# Socially", or "Attend Church, Synagogue, or Mosque Once Per Week"). The
+# resulting display is an aesthetically-pleasing, easy-to-read bar chart which
+# shows the value of this variable for each MSA. The MSAs are arranged in
+# ascending order, a nice color gradient is used, and the orientation of the
+# axes is flipped. It could have been made more clear what units are being used
+# to measure the "Value", however. Once you get this overview of the data and
+# how the MSAs compare on each variable, you can move onto the "Models" page,
+# which has some very clear and beautiful graphics that allow the user to
+# explore the relationships between different variables. The Analysis has a
+# regression table which would probably look better if it were accompanied by a
+# bit more explanation. There is a tool which allows you to choose variables and
+# create a regression table, which is cool, but this could also be more useful
+# if it were accompanied by explanations of the units used in measuring the
+# variables. Overall, this project could have been strengthened by having
+# Introduction and About pages that were more comprehensive and well-formatted.
+# This would orient the user so that they could move more quickly to
+# understanding the graphics and using the interactive tools.
+
+```
+
+```{r}
+
+# Project 2: Arnav Srivastava: Global Health Spending Trends
+
+# In this project, Arnav does a good job of walking the reader through his analysis by describing the steps he is taking in order and explaining to the user what each graphic shows. While I liked that he formatted the graphics and accompanying text side-by-side, many of the graphics did not fit on the page, making it so that the user had to scroll sideways to see the missing part. The plots on his Income & Regional Spending Trends page were mostly well-formatted (in terms of color, labeling, etc.), and they were accompanied by some cool interactive features (like the ability to toggle between faceted plots of different income groups using a drop down menu), but I did find the second plot a bit difficult to understand, and felt that the explanation could have been improved. I also think that he could have made some of these plots more captivating by using animation. I really liked that he used animation in the "Relationship between Death and Health Spending" section of his "Disease-Induced Deaths and Spending" page to show the relationship between spending and disease-induced deaths by income-group, as well as the shifting burden of disease (NCDs vs communicable) for each income group. I really liked that his plots throughout the "Relationship between Death and Health Spending" page were accompanied by significant text explanation, as this helps to guide users who may not have the most intuitive understanding of the graphics.
+
+```
+
