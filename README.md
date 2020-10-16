@@ -1,2 +1,2 @@
 # final_project
-This repo will include my milestone assignments for the GOV 50 final project.
+This repo includes files for my GOV 50 final project.
