@@ -7,6 +7,8 @@ library(shiny)
 
 library(shinythemes)
 
+library(tidyverse)
+
 # Load data
 
 county_drug_data <- readRDS("data/county_drug_data.rds")
