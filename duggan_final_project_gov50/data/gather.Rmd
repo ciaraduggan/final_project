@@ -1,0 +1,124 @@
+---
+title: "Gathering Data"
+author: "Ciara Duggan"
+date: "10/15/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+ 
+# Setting up file and loading libraries
+library(tidyverse)
+library(readr)
+```
+
+
+```{r rx_data}
+
+# Loading AmfAR county-level opioid Rx rate dataset (2006-2017).
+
+county_rx_rate <- 
+  read_csv(file = "/Users/ciaraduggan/Desktop/gov_50/final_project/duggan_final_project_gov50/raw_data/county_opioid_RxRate.csv", 
+           col_types = cols(
+             STATE = col_character(),
+             STATEABBREVIATION = col_character(),
+             COUNTY = col_character(),
+             STATEFP = col_character(),
+             COUNTYFP = col_character(),
+             INDICATOR = col_character(),
+             YEAR = col_character(),
+             VALUE = col_double()
+))
+
+
+```
+
+# AmfAR County-Level Opioid Prescription Data
+
+This dataset was downloaded from the AmfAR Opioid and Health Indicators database.
+The specific page in the database can be found here: 
+https://opioid.amfar.org/indicator/opioid_RxRate
+
+For indicator "opioid_RxRate", the "value" measure signifies the number of 
+opioid prescriptions per 100 persons in the county.
+
+From AmfAR: "This measure uses IQVIA data from pharmacies which dispense nearly 
+90% of all retail prescriptions in the US. It includes prescriptions paid for by
+commercial insurance, Medicaid, Medicare, or cash or equivalent. Cough and cold 
+formulations containing opioids and buprenorphine products typically used to
+treat opioid use disorder are excluded, and IQVIA data does not include 
+methadone dispensed through methadone maintenance treatment programs."
+
+Data Source: Centers for Disease Control and Prevention
+
+Available at: https://www.cdc.gov/drugoverdose/maps/rxrate-maps.html
+
+```{r drug_death_data}
+
+# Loading AmfAR data on county-level age-adjusted drug-related death rate (per
+# 100,000).
+
+county_drug_deaths <-
+  read_csv(file = "/Users/ciaraduggan/Desktop/gov_50/final_project/duggan_final_project_gov50/raw_data/county_ageadjusted_drugdeathrate.csv", 
+           col_types = cols(
+             STATE = col_character(),
+             STATEABBREVIATION = col_character(),
+             COUNTY = col_character(),
+             STATEFP = col_character(),
+             COUNTYFP = col_character(),
+             INDICATOR = col_character(),
+             YEAR = col_character(),
+             VALUE = col_double()
+)) 
+       
+```
+  
+          
+# Description of data:
+
+xxx
+
+
+```{r data_wrangle}
+
+# Pivoting the county_drug_deaths dataset to a wider format to create a variable
+# containing age-adjusted drug-related death rate estimates.
+
+county_drug_deaths_wider <-
+  county_drug_deaths %>%
+  pivot_wider(names_from = "INDICATOR", values_from = "VALUE")
+
+# Pivoting the county_rx_rate_wider dataset to a wider format to create a
+# variable containing the opioid prescription rates per 100,000 people.
+
+county_rx_rate_wider <-
+  county_rx_rate %>%
+  pivot_wider(names_from = "INDICATOR", values_from = "VALUE")
+
+# Joining the resulting county_drug_deaths_wider and county_rx_rate_wider data
+# sets by county and year.
+
+county_drug_data <- county_drug_deaths_wider %>%
+  inner_join(county_rx_rate_wider, by = c("COUNTY", 
+                                          "YEAR", 
+                                          "STATE", 
+                                          "STATEABBREVIATION",
+                                          "STATEFP",
+                                          "COUNTYFP"
+  ))
+```
+
+```{r test_plot}
+
+# Creating scatterplot for year 2006 with opioid prescription rate per 100,000
+# on x-axis and age-adjusted drug-related deaths per 100,000 on y-axis.
+
+county_drug_data %>%
+  filter(YEAR == 2006) %>%
+  ggplot(aes(x = opioid_RxRate, y = drugdeathrate_est)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth(method = lm)
+
+```
+
