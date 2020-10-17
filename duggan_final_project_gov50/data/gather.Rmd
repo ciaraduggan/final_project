@@ -34,7 +34,7 @@ county_rx_rate <-
 
 ```
 
-# AmfAR County-Level Opioid Prescription Data
+# AmfAR County-Level Opioid Prescription Data (per 100 persons)
 
 This dataset was downloaded from the AmfAR Opioid and Health Indicators database.
 The specific page in the database can be found here: 
@@ -75,9 +75,30 @@ county_drug_deaths <-
 ```
   
           
-# Description of data:
+# AmfAR Data on Age-Adjusted Drug Poisoning Deaths per 100,000 (Modeled)
 
-xxx
+This dataset was downloaded from the AmfAR Opioid and Health Indicators 
+database. The specific page in the database can be found here: 
+https://opioid.amfar.org/indicator/drugdeathrate_est
+
+For indicator "drugdeathrate_est", the "value" measure signifies the estimated
+rate of death from drug poisoning, including both illicit and 
+prescription drugs, per 100,000 U.S. standard population for 2000. 
+
+From AmfAR: "Estimates come from the Centers for Disease Control and Prevention
+(CDC) National Center for Health Statistics (NCHS) Data Visualization Gallery. 
+It should be noted that these data are estimates, and are drawn from a model
+designed to generate stable estimates of death rates where data are sparse due
+to small population size. Specific county values should be interpreted with 
+caution, and the actual measure of drug deaths per 100,000 should be preferred 
+where available. More information on the estimation procedure and county data 
+including confidence intervals are available at the link below.
+
+Data Source: Centers for Disease Control's National Center for Health Statistics 
+Data Visualization Gallery.
+
+Available at:
+https://www.cdc.gov/nchs/data-visualization/drug-poisoning-mortality/
 
 
 ```{r data_wrangle}
@@ -109,10 +130,12 @@ county_drug_data <- county_drug_deaths_wider %>%
   ))
 ```
 
+# Test plot
+
 ```{r test_plot}
 
-# Creating scatterplot for year 2006 with opioid prescription rate per 100,000
-# on x-axis and age-adjusted drug-related deaths per 100,000 on y-axis.
+# Creating a test scatterplot for year 2006 with opioid prescription rate per 
+# 100,000 on x-axis and age-adjusted drug-related deaths per 100,000 on y-axis.
 
 county_drug_data %>%
   filter(YEAR == 2006) %>%
@@ -120,5 +143,11 @@ county_drug_data %>%
   geom_point(alpha = 0.1) +
   geom_smooth(method = lm)
 
+```
+
+# Code
+
+```{r print-code, ref.label=knitr::all_labels(), echo = TRUE, eval=FALSE}
+# Printing code at bottom
 ```
 
