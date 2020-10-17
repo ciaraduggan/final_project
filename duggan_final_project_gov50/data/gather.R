@@ -7,7 +7,7 @@ library(readr)
 # Loading AmfAR county-level opioid Rx rate dataset (2006-2017).
 
 county_rx_rate <- 
-  read_csv(file = "/Users/ciaraduggan/Desktop/gov_50/final_project/duggan_final_project_gov50/raw_data/county_opioid_RxRate.csv", 
+  read_csv(file = "raw_data/county_opioid_RxRate.csv", 
            col_types = cols(
              STATE = col_character(),
              STATEABBREVIATION = col_character(),
@@ -23,7 +23,7 @@ county_rx_rate <-
 # 100,000).
 
 county_drug_deaths <-
-  read_csv(file = "/Users/ciaraduggan/Desktop/gov_50/final_project/duggan_final_project_gov50/raw_data/county_ageadjusted_drugdeathrate.csv", 
+  read_csv(file = "raw_data/county_ageadjusted_drugdeathrate.csv", 
            col_types = cols(
              STATE = col_character(),
              STATEABBREVIATION = col_character(),

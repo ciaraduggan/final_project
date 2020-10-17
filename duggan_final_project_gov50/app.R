@@ -9,7 +9,7 @@ library(shinythemes)
 
 # Load data
 
-county_drug_data <- readRDS("/Users/ciaraduggan/Desktop/gov_50/final_project/duggan_final_project_gov50/data/county_drug_data.rds")
+county_drug_data <- readRDS("data/county_drug_data.rds")
 
 # Define UI
 ui <- navbarPage(
